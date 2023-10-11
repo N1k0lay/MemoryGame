@@ -1,0 +1,12 @@
+[
+  {
+    "name": "level 1",
+    "icons": ["./assets/img/angular.svg", "./assets/img/aurelia.svg", "./assets/img/backbone.svg", "./assets/img/ember.svg", "./assets/img/react.svg", "./assets/img/vue.svg"],
+    "badge": "./assets/img/js-badge.svg"
+  },
+  {
+    "name": "level 2",
+    "icons": ["./assets/img/angular.svg", "./assets/img/aurelia.svg", "./assets/img/backbone.svg", "./assets/img/ember.svg", "./assets/img/react.svg", "./assets/img/vue.svg"],
+    "badge": "./assets/img/js-badge.svg"
+  }
+]
