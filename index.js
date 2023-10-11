@@ -26,6 +26,7 @@ function memoryGame() {
     let lockBoard = false;
 
     let pairs = 0;
+    let steps = 0;
 
     function flipCard() {
         if (lockBoard) return;
@@ -40,6 +41,9 @@ function memoryGame() {
         }
         secondCard = this;
         lockBoard = true;
+        steps += 1;
+        console.log(steps)
+
         firstCard.dataset.image === secondCard.dataset.image ? disableCards() : unFlipCards();
     }
 
@@ -75,8 +79,8 @@ function memoryGame() {
         })
     })();
 
-    function gameEnd () {
-        alert('Игра закончена')
+    function gameEnd() {
+        alert(`Игра закончена ${steps}`)
     }
 
     cards.forEach(card => card.addEventListener('click', flipCard));
