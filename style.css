@@ -6,8 +6,10 @@
 
 body {
     height: 100vh;
+    width: 100vw;
     display: flex;
     background: #5a47a6;
+    flex-direction: column;
 }
 
 .memory_game {
@@ -52,4 +54,21 @@ body {
 
 .front_face {
     transform: rotateY(180deg);
+}
+
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vw 1vw;
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.footer .rs img {
+    height: 100%;
+    width: 100%;
+    max-height: 30px;
 }
