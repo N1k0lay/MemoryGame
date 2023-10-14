@@ -4,7 +4,7 @@ fetch('./levels.json')
 
 
 function renderBoard(data) {
-    const board = document.querySelector('.memory_game');
+    const board = document.querySelector('.memory_board');
     data.icons.forEach(icon => {
         const memoryCard = document.createElement("div");
         const name = icon.split('/').pop().split('.').shift();
@@ -20,6 +20,7 @@ function renderBoard(data) {
 
 function memoryGame() {
     const cards = document.querySelectorAll('.memory_card');
+    const movesCount = document.querySelector('.moves_count');
 
     let hasFlippedCard = false;
     let firstCard, secondCard;
@@ -42,8 +43,7 @@ function memoryGame() {
         secondCard = this;
         lockBoard = true;
         steps += 1;
-        console.log(steps)
-
+        movesCount.textContent = steps;
         firstCard.dataset.image === secondCard.dataset.image ? disableCards() : unFlipCards();
     }
 
@@ -52,7 +52,7 @@ function memoryGame() {
         secondCard.removeEventListener('click', flipCard)
         resetBoard();
         pairs += 1;
-        if(pairs === 6) {
+        if (pairs === 6) {
             setTimeout(() => {
                 gameEnd();
             }, 500)
@@ -80,10 +80,51 @@ function memoryGame() {
     })();
 
     function gameEnd() {
-        alert(`Игра закончена ${steps}`)
+        addScoreToLS(steps);
+        // alert(`Игра закончена ${steps}`)
+        const endgame_wrapper = document.querySelector('.endgame_wrapper');
+        endgame_wrapper.classList.add('open');
     }
 
+    gameEnd();
     cards.forEach(card => card.addEventListener('click', flipCard));
 }
 
+const scoreboardBtn = document.querySelector('#scoreboard_btn');
+scoreboardBtn.addEventListener('click', () => {
+    document.querySelector('.scoreboard_wrapper').classList.toggle('open');
+    lastGameList();
+})
 
+document.addEventListener('click', (e) => {
+    e.target.classList.contains('scoreboard_wrapper') ? document.querySelector('.scoreboard_wrapper').classList.toggle('open') : '';
+})
+
+document.querySelectorAll('.popup_close').forEach(item => {
+    item.addEventListener('click', () => {
+        console.log('close')
+        document.querySelector('.open').classList.toggle('open');
+    })
+})
+
+
+function addScoreToLS(score) {
+    if (!localStorage.getItem('memoryGame')) {
+        localStorage.setItem('memoryGame', JSON.stringify([]));
+    }
+    let oldArr = JSON.parse(localStorage.getItem('memoryGame'));
+    oldArr.push(score);
+    localStorage.setItem('memoryGame', JSON.stringify(oldArr));
+}
+
+function lastGameList() {
+    let lastGameArr = JSON.parse(localStorage.getItem('memoryGame'));
+    const tbody = document.querySelector('.tbody');
+    tbody.innerHTML = '';
+    lastGameArr.forEach((item, index) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>Game ${index+1}</td>
+                <td>${item}</td>`
+        tbody.appendChild(tr)
+    })
+}

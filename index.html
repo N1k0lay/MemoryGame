@@ -5,17 +5,71 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Memory Game by N1k0lay</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
 </head>
 <body>
-<section class="memory_game"></section>
+<header>
+    <div class="game_score">
+        <div class="moves">Moves: <span class="moves_count">0</span></div>
+        <h1>Memory Game</h1>
+        <button class="button" id="scoreboard_btn">Scoreboard</button>
+    </div>
+</header>
+<main class="memory_game">
+    <div class="memory_board"></div>
+</main>
 <footer class="footer">
     <div>Author - <a href="https://github.com/N1k0lay">N1k0lay</a></div>
     <div>2023</div>
-    <div class="rs"><a href="https://rs.school/js-stage0/"><img src="https://rs.school/images/rs_school_js.svg" alt="rs_school_js"></a></div>
+    <div class="rs">
+        <a href="https://rs.school/js-stage0/">
+            <img src="https://rs.school/images/rs_school_js.svg"
+                 alt="rs_school_js">
+        </a>
+    </div>
 </footer>
+<div class="scoreboard_wrapper">
+    <div class="scoreboard_popup">
+        <h2>Scoreboard</h2>
+        <div class="table_wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Game №</th>
+                    <th>Moves</th>
+                </tr>
+                </thead>
+                <tbody class="tbody"></tbody>
+            </table>
+        </div>
+
+        <button class="popup_close">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"
+                 width="30px" height="30px">
+                <path d="M25.707,6.293c-0.195-0.195-1.805-1.805-2-2c-0.391-0.391-1.024-0.391-1.414,0c-0.195,0.195-17.805,17.805-18,18c-0.391,0.391-0.391,1.024,0,1.414c0.279,0.279,1.721,1.721,2,2c0.391,0.391,1.024,0.391,1.414,0c0.195-0.195,17.805-17.805,18-18C26.098,7.317,26.098,6.683,25.707,6.293z"/>
+                <path d="M23.707,25.707c0.195-0.195,1.805-1.805,2-2c0.391-0.391,0.391-1.024,0-1.414c-0.195-0.195-17.805-17.805-18-18c-0.391-0.391-1.024-0.391-1.414,0c-0.279,0.279-1.721,1.721-2,2c-0.391,0.391-0.391,1.024,0,1.414c0.195,0.195,17.805,17.805,18,18C22.683,26.098,23.317,26.098,23.707,25.707z"/>
+            </svg>
+        </button>
+    </div>
+</div>
+<div class="endgame_wrapper">
+    <div class="endgame_popup">
+        <h2>Competed!</h2>
+        <h3>Restart?</h3>
+        <button class="button">YES!</button>
+        <button class="popup_close">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"
+                 width="30px" height="30px">
+                <path d="M25.707,6.293c-0.195-0.195-1.805-1.805-2-2c-0.391-0.391-1.024-0.391-1.414,0c-0.195,0.195-17.805,17.805-18,18c-0.391,0.391-0.391,1.024,0,1.414c0.279,0.279,1.721,1.721,2,2c0.391,0.391,1.024,0.391,1.414,0c0.195-0.195,17.805-17.805,18-18C26.098,7.317,26.098,6.683,25.707,6.293z"/>
+                <path d="M23.707,25.707c0.195-0.195,1.805-1.805,2-2c0.391-0.391,0.391-1.024,0-1.414c-0.195-0.195-17.805-17.805-18-18c-0.391-0.391-1.024-0.391-1.414,0c-0.279,0.279-1.721,1.721-2,2c-0.391,0.391-0.391,1.024,0,1.414c0.195,0.195,17.805,17.805,18,18C22.683,26.098,23.317,26.098,23.707,25.707z"/>
+            </svg>
+        </button>
+    </div>
+</div>
 <script src="./index.js"></script>
 </body>
-
 </html>
