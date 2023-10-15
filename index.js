@@ -1,10 +1,14 @@
-fetch('./levels.json')
-    .then(res => res.json())
-    .then(data => renderBoard(data[0]));
+function startGame(id) {
+    fetch('./levels.json')
+        .then(res => res.json())
+        .then(data => renderBoard(data[id]));
 
+}
+startGame(0);
 
 function renderBoard(data) {
     const board = document.querySelector('.memory_board');
+    board.innerHTML = '';
     data.icons.forEach(icon => {
         const memoryCard = document.createElement("div");
         const name = icon.split('/').pop().split('.').shift();
@@ -81,12 +85,18 @@ function memoryGame() {
 
     function gameEnd() {
         addScoreToLS(steps);
-        // alert(`Игра закончена ${steps}`)
+        document.querySelector('.endgame_popup__moves').textContent = steps;
         const endgame_wrapper = document.querySelector('.endgame_wrapper');
         endgame_wrapper.classList.add('open');
     }
 
-    gameEnd();
+    const restartBtn = document.querySelector('#restart');
+
+    restartBtn.addEventListener('click', () => {
+        document.querySelector('.endgame_wrapper').classList.remove('open');
+        startGame(0)
+    })
+
     cards.forEach(card => card.addEventListener('click', flipCard));
 }
 
@@ -123,7 +133,7 @@ function lastGameList() {
     tbody.innerHTML = '';
     lastGameArr.forEach((item, index) => {
         const tr = document.createElement('tr');
-        tr.innerHTML = `<td>Game ${index+1}</td>
+        tr.innerHTML = `<td>Game ${index + 1}</td>
                 <td>${item}</td>`
         tbody.prepend(tr)
     })
