@@ -125,6 +125,6 @@ function lastGameList() {
         const tr = document.createElement('tr');
         tr.innerHTML = `<td>Game ${index+1}</td>
                 <td>${item}</td>`
-        tbody.appendChild(tr)
+        tbody.prepend(tr)
     })
 }
